@@ -27,7 +27,7 @@ outputs:
         - {{ compiler('cxx') }}
         - cmake
         - make
-        - {{ mpi }}  # [mpi == "openmpi"]
+        - {{ mpi }}  # [mpi == 'openmpi' and build_platform != target_platform]
       host:
         - {{ mpi }}
         - libgomp  # [linux]

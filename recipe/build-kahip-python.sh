@@ -1,3 +1,5 @@
+set -e
+
 cmake \
   -DBUILD_SHARED_LIBS=ON \
   -DBUILDPYTHONMODULE=ON \
