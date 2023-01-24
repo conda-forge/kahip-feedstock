@@ -8,10 +8,9 @@
 set -e
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-0}" == "1" ]]; then
-  # add $PREFIX/lib to CXXFLAGS because $BUILD_PREFIX/lib
-  # gets added for cross-compiled openmpi. Not sure why!
-  export CXXFLAGS="${CXXFLAGS} -L${PREFIX}/lib"
-  export CMAKE_ARGS="--debug-output ${CMAKE_ARGS}"
+  # needed for cross-compile openmpi
+  export OPAL_CC="$CC"
+  export OPAL_PREFIX="$PREFIX"
 fi
 
 cmake \
