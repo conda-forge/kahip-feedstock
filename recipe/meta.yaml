@@ -50,6 +50,9 @@ outputs:
   - name: kahip-python
     build:
       script: bash ${RECIPE_DIR}/build-kahip-python.sh
+      # to preserve variants
+      force_use_keys:
+        - mpi
 
     requirements:
       build:
