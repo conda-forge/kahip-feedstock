@@ -20,6 +20,8 @@ outputs:
       script: bash ${RECIPE_DIR}/build-kahip.sh
       run_exports:
         - {{ pin_subpackage("kahip", max_pin="x.x.x") }}
+      force_use_keys:
+        - python
 
     requirements:
       build:
