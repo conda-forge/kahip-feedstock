@@ -52,9 +52,6 @@ outputs:
   - name: kahip-python
     build:
       script: bash ${RECIPE_DIR}/build-kahip-python.sh
-      # to preserve variants
-      force_use_keys:
-        - mpi
 
     requirements:
       build:
@@ -64,7 +61,9 @@ outputs:
         - make
         - python  # [build_platform != target_platform]
         - cross-python_{{ target_platform }}  # [build_platform != target_platform]
+        - pybind11  # [build_platform != target_platform]
       host:
+        - {{ mpi }}
         - python
         - pybind11
         - {{ pin_subpackage('kahip', exact=True) }}
