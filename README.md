@@ -1,11 +1,11 @@
-About kahip
-===========
+About kahip-feedstock
+=====================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/kahip-feedstock/blob/main/LICENSE.txt)
 
 Home: https://kahip.github.io
 
 Package license: MIT
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/kahip-feedstock/blob/main/LICENSE.txt)
 
 Summary: The graph partitioning framework KaHIP -- Karlsruhe High Quality Partitioning
 
