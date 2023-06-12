@@ -4,6 +4,7 @@ set -e
 rm -rvf misc/pymodule/pybind11/*
 
 cmake \
+  --trace-expand \
   ${CMAKE_ARGS} \
   -DBUILD_SHARED_LIBS=ON \
   -DBUILDPYTHONMODULE=ON \
