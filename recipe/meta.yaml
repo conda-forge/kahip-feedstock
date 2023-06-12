@@ -61,7 +61,6 @@ outputs:
         - make
         - python  # [build_platform != target_platform]
         - cross-python_{{ target_platform }}  # [build_platform != target_platform]
-        - pybind11  # [build_platform != target_platform]
         - {{ mpi }}  # [mpi == 'openmpi' and build_platform != target_platform]
       host:
         - {{ mpi }}
