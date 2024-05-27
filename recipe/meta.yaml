@@ -11,7 +11,7 @@ source:
   patches:
     - 0001-install-python-component.patch
 build:
-  number: 2
+  number: 3
   skip: true  # [win]
 
 outputs:
@@ -29,6 +29,7 @@ outputs:
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - pybind11                               # [build_platform != target_platform]
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
         - {{ compiler('cxx') }}
         - cmake
         - make
@@ -59,6 +60,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
         - {{ compiler('cxx') }}
         - cmake
         - make
