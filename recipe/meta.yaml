@@ -1,5 +1,5 @@
 {% set name = "kahip" %}
-{% set version = "3.17" %}
+{% set version = "3.18" %}
 
 package:
   name: {{ name }}-split
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/KaHIP/KaHIP/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 3aa5fedf5a69fd3771ac97b4dbcc40f6f8a45f6c8b64e30d85c95cee124e38c3
+  sha256: e5003fa324362255d837899186cd0c3e42d376664f0d555e7e7a1d51334817c9
   patches:
     - 0001-install-python-component.patch
 build:
