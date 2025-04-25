@@ -1,0 +1,35 @@
+From e3be8800f7acc00475b5c05cb4e9de8ef1aef0b8 Mon Sep 17 00:00:00 2001
+From: Min RK <benjaminrk@gmail.com>
+Date: Fri, 25 Apr 2025 20:05:55 +0200
+Subject: [PATCH 2/2] metis doesn't need gk_lib
+
+that's wrong
+---
+ CMakeLists.txt | 11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5979f01..742688b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -74,16 +74,7 @@ endif()
+ find_library(LIB_METIS metis)
+ if(LIB_METIS)
+   message(STATUS "Metis support detected")
+-  find_library(LIB_GK GKlib)
+-  if (NOT LIB_GK)
+-    message(STATUS "Metis requires GKlib, but GKlib was not found")
+-    set(LIB_METIS "NOTFOUND")
+-  else()
+-    add_definitions("-DUSEMETIS")
+-    if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+-      include_directories(/usr/local/include)
+-    endif()
+-  endif()
++  add_definitions("-DUSEMETIS")
+ endif()
+ 
+ # 64 Bit option
+-- 
+2.47.0
+

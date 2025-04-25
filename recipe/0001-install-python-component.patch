@@ -1,17 +1,17 @@
-From 3e542e7eb2b98c9440965ff374cef2708efa0d82 Mon Sep 17 00:00:00 2001
+From b949f34ac7538c47c3c4e16c4c4ded4e2003a380 Mon Sep 17 00:00:00 2001
 From: Min RK <benjaminrk@gmail.com>
-Date: Thu, 12 Jan 2023 15:47:20 +0100
-Subject: [PATCH] install python component
+Date: Fri, 25 Apr 2025 19:58:41 +0200
+Subject: [PATCH] install Python lib to site-packages as its own component
 
 ---
- CMakeLists.txt | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ CMakeLists.txt | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 6b42b33..7bf61df 100644
+index ab806c4..5979f01 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -390,8 +390,18 @@ endif()
+@@ -397,9 +397,18 @@ endif()
  # pybind11 module
  option(BUILDPYTHONMODULE "Build Python binding." OFF)
  if (BUILDPYTHONMODULE)
@@ -22,14 +22,15 @@ index 6b42b33..7bf61df 100644
 +  )
    find_package(pybind11 REQUIRED)
    pybind11_add_module(kahip_python_binding ${CMAKE_CURRENT_SOURCE_DIR}/misc/pymodule/kahip.cpp)
-   target_link_libraries(kahip_python_binding PUBLIC kahip_static)
-   set_target_properties(kahip_python_binding PROPERTIES OUTPUT_NAME "kahip")
+-  install(TARGETS kahip_python_binding DESTINATION "${CMAKE_INSTALL_PYTHONDIR}/kahip")
 +  install(TARGETS kahip_python_binding
 +    LIBRARY DESTINATION "${Python3_SITELIB}"
 +    COMPONENT python
 +    EXCLUDE_FROM_ALL
 +  )
+   target_link_libraries(kahip_python_binding PUBLIC kahip_static)
+   set_target_properties(kahip_python_binding PROPERTIES OUTPUT_NAME "kahip")
  endif ()
 -- 
-2.42.0
+2.47.0
 

@@ -10,6 +10,7 @@ source:
   sha256: ab128104d198061b4dcad76f760aca240b96de781c1b586235ee4f12fd6829c6
   patches:
     - 0001-install-python-component.patch
+    - 0002-metis-doesn-t-need-gk_lib.patch
 build:
   number: 0
   skip: true  # [win]
