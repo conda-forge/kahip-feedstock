@@ -12,7 +12,7 @@ source:
     - 0001-install-python-component.patch
     - 0002-metis-doesn-t-need-gk_lib.patch
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
 
 outputs:
