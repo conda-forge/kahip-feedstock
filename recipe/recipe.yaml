@@ -1,0 +1,112 @@
+schema_version: 1
+
+context:
+  name: kahip
+  version: "3.23"
+
+recipe:
+  name: ${{ name }}-split
+  version: ${{ version }}
+
+source:
+  url: https://github.com/KaHIP/KaHIP/archive/refs/tags/v${{ version }}.tar.gz
+  sha256: 04d2655074457e17aad12b584e167995cee464532b7b909dcebd3445461783b8
+  patches:
+    - 0001-install-python-component.patch
+    - 0002-metis-doesn-t-need-gk_lib.patch
+
+build:
+  number: 0
+  skip: win
+
+outputs:
+  - package:
+      name: kahip
+    build:
+      script: build-kahip
+      variant:
+        use_keys: 
+          - python
+    requirements:
+      build:
+        - ${{ compiler('c') }}
+        - ${{ stdlib("c") }}
+        - ${{ compiler('cxx') }}
+        - cmake
+        - make
+      host:
+        - ${{ mpi }}
+        - if: linux
+          then: libgomp
+        - if: osx
+          then: llvm-openmp
+        - metis
+      run_exports:
+        - ${{ pin_subpackage("kahip", upper_bound="x.x.x") }}
+    tests:
+      - package_contents:
+          lib:
+            - libkahip
+            - libkahip_static
+          bin:
+            - kaffpa
+      - files:
+          source:
+            - examples/
+        script:
+          - kaffpa examples/delaunay_n15.graph --k 2 --preconfiguration=strong
+  - package:
+      name: kahip-python
+    build:
+      script: build-kahip-python
+    requirements:
+      build:
+        - ${{ compiler('c') }}
+        - ${{ stdlib('c') }}
+        - ${{ compiler('cxx') }}
+        - cmake
+        - make
+        - if: build_platform != target_platform
+          then:
+            - python
+            - cross-python_${{ target_platform }}
+            - if: mpi == 'openmpi'
+              then: ${{ mpi }}
+      host:
+        - ${{ mpi }}
+        - python
+        - pybind11
+        - ${{ pin_subpackage('kahip', exact=True) }}
+      run:
+        - python
+        - ${{ pin_subpackage('kahip', exact=True) }}
+    tests:
+      - python:
+          imports:
+            - kahip
+
+about:
+  summary: The graph partitioning framework KaHIP -- Karlsruhe High Quality Partitioning
+  description: |
+    KaHIP is a family of graph partitioning programs.
+    It includes KaFFPa (Karlsruhe Fast Flow Partitioner),
+    which is a multilevel graph partitioning algorithm,
+    in its variants Strong, Eco and Fast,
+    KaFFPaE (KaFFPaEvolutionary) which is a parallel evolutionary algorithm
+    that uses KaFFPa to provide combine and mutation operations,
+    as well as KaBaPE which extends the evolutionary algorithm.
+    Moreover, specialized techniques are included to partition road networks (Buffoon),
+    to output a vertex separator from a given partition
+    as well as techniques geared towards the efficient partitioning of social networks.
+  license: MIT
+  license_file:
+    - LICENSE
+    - extern/argtable3-3.2.2/LICENSE
+  homepage: https://kahip.github.io
+  repository: https://github.com/KaHIP/KaHIP
+  documentation: https://kahip.github.io
+
+extra:
+  feedstock-name: kahip
+  recipe-maintainers:
+    - minrk
