@@ -3,7 +3,7 @@ About kahip-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/kahip-feedstock/blob/main/LICENSE.txt)
 
-Home: https://kahip.github.io
+Home: https://kahip.github.io/
 
 Package license: MIT
 
@@ -11,7 +11,7 @@ Summary: The graph partitioning framework KaHIP -- Karlsruhe High Quality Partit
 
 Development: https://github.com/KaHIP/KaHIP
 
-Documentation: https://kahip.github.io
+Documentation: https://kahip.github.io/
 
 KaHIP is a family of graph partitioning programs.
 It includes KaFFPa (Karlsruhe Fast Flow Partitioner),
@@ -23,7 +23,6 @@ as well as KaBaPE which extends the evolutionary algorithm.
 Moreover, specialized techniques are included to partition road networks (Buffoon),
 to output a vertex separator from a given partition
 as well as techniques geared towards the efficient partitioning of social networks.
-
 
 Current build status
 ====================
