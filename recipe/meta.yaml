@@ -1,5 +1,5 @@
 {% set name = "kahip" %}
-{% set version = "3.22" %}
+{% set version = "3.24" %}
 
 package:
   name: {{ name }}-split
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://github.com/KaHIP/KaHIP/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 3cbadfbf8d503351d921531413d3b66ad347a6d6e213120db87462093bb66b7c
+  sha256: 56ccef8d26bee02b3e5685d78c5fedc13f336b4ab53af18d97fa8145be9c8f0e
   patches:
     - 0001-install-python-component.patch
     - 0002-metis-doesn-t-need-gk_lib.patch
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
 
 outputs:
