@@ -17,7 +17,7 @@ cmake \
   --target kahip_python_binding \
   -j${CPU_COUNT:-2}
 
-cmake --install build --component python
+cmake --install build --component python -v
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-0}" != "1" ]]; then
   $PYTHON -c 'import kahip'
