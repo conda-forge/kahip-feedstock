@@ -16,7 +16,7 @@ source:
     - 0002-metis-doesn-t-need-gk_lib.patch
 
 build:
-  number: 0
+  number: 1
   skip: win
 
 outputs:
@@ -25,7 +25,7 @@ outputs:
     build:
       script: build-kahip
       variant:
-        use_keys: 
+        use_keys:
           - python
     requirements:
       build:
