@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: kahip
-  version: "3.25"
+  version: "3.27"
 
 recipe:
   name: ${{ name }}-split
@@ -10,7 +10,7 @@ recipe:
 
 source:
   url: https://github.com/KaHIP/KaHIP/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 3abad20158887b585b4d4792c35fa9023b7fd634b2bc4494334a3951b69f4842
+  sha256: 5c649af08b1200c9f97424a3e86c3fceb8eea0eb2d0489f09f405e080521c0e2
   patches:
     - 0001-install-python-component.patch
     - 0002-metis-doesn-t-need-gk_lib.patch
@@ -25,7 +25,7 @@ outputs:
     build:
       script: build-kahip
       variant:
-        use_keys: 
+        use_keys:
           - python
     requirements:
       build:
